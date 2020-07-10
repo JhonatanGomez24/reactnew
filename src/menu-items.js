@@ -22,10 +22,10 @@ export default {
         },
         {
           id: 'facility',
-          title: 'Sucursales',
+          title: 'Facilitys',
           type: 'item',
           url: '/facility',
-          icon: 'feather icon-cpu',
+          icon: 'feather icon-folder',
         },
       ],
     },
