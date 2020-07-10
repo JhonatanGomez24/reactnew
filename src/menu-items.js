@@ -27,6 +27,13 @@ export default {
           url: '/facility',
           icon: 'feather icon-cpu',
         },
+        {
+          id: 'delivery',
+          title: 'Entregas',
+          type: 'item',
+          url: '/delivery',
+          icon: 'feather icon-truck',
+        },
       ],
     },
     {

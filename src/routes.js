@@ -43,6 +43,8 @@ const Example = React.lazy(() => import('./Views/Example'));
 
 const Facility = React.lazy(() => import('./Views/Facilitys'));
 
+const Delivery = React.lazy(() => import('./Views/Delivery'));
+
 const routes = [
   {
     path: '/dashboard/default',
@@ -128,6 +130,12 @@ const routes = [
     exact: true,
     name: 'Facility',
     component: Facility,
+  },
+  {
+    path: '/delivery',
+    exact: true,
+    name: 'Delivery',
+    component: Delivery,
   },
 ];
 
