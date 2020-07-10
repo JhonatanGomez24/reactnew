@@ -1,6 +1,5 @@
 import React from 'react';
 import $ from 'jquery';
-import { exact } from 'prop-types';
 
 window.jQuery = $;
 window.$ = $;
