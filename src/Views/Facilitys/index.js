@@ -13,38 +13,40 @@ const Example = (props) => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   useEffect(() => {
-    const fetchfacility = async() => {
-      dispatch({type: actions.fetchData})
+    const fetchFacility = async () => {
+      dispatch({ type: actions.fetchData });
       try {
-       let responsive = await axios.get('http://ec2-52-90-69-15.compute-1.amazonaws.com/api/delivery/facilities');
-       dispatch({type: actions.fetchDataSuccess, payload:responsive.data})
+        let responsive = await axios.get(
+          'http://ec2-52-90-69-15.compute-1.amazonaws.com/api/delivery/facilities'
+        );
+        dispatch({ type: actions.fetchDataSuccess, payload: responsive.data });
       } catch (error) {
-       dispatch({type: actions.fetchDataError, payload:error})
+        dispatch({ type: actions.fetchDataError, payload: error });
       }
-    }
-    fetchfacility();
-  },[])
+    };
+    fetchFacility();
+  }, [state.reload]);
 
   const addFacility = () => {
     props.history.push('/facility/new');
   };
 
-  useEffect(() => {
-    const fetchfacility = async() => {
-      dispatch({type: actions.fetchData})
-      try {
-       let responsive = await axios.delete('http://ec2-52-90-69-15.compute-1.amazonaws.com/api/delivery/facilities/${id}');
-       dispatch({type: actions.fetchDataSuccess, payload:responsive.data})
-      } catch (error) {
-       dispatch({type: actions.fetchDataError, payload:error})
-      }
-    }
-    fetchfacility();
-  },[])
+  const editFacility = (id) => {
+    props.history.push(`/facility/${id}`);
+  }
 
-  const deleteFacility = (idx) => {
-    dispatch({ type: actions.deleteData, payload: idx });
+  const deleteFacility = async (id) => {
+    dispatch({ type: actions.deleteData });
+    try {
+      await axios.delete(
+        `http://ec2-52-90-69-15.compute-1.amazonaws.com/api/delivery/facilities/${id}`
+      );
+      dispatch({ type: actions.deleteDataSuccess });
+    } catch (error) {
+      dispatch({ type: actions.deleteDataError, payload: error });
+    }
   };
+
   return (
     <Aux>
       <Container>
@@ -80,8 +82,16 @@ const Example = (props) => {
                       <th>{item.name}</th>
                       <th>{item.description}</th>
                       <th>
-                        <Button 
-                          onClick={() => deleteFacility(idx)}
+                      <Button
+                          onClick={() => editFacility(item.id)}
+                          variant='primary'
+                        >
+                          <span className='pcoded-micon'>
+                            <i className='feather icon-edit-2' />
+                          </span>
+                        </Button>  
+                      <Button
+                          onClick={() => deleteFacility(item.id)}
                           variant='danger'
                         >
                           <span className='pcoded-micon'>

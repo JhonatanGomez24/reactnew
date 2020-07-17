@@ -4,5 +4,7 @@ export const initialState = {
       description: '',
     },
     sendingFacility: false,
-    sendingFacilityError: null,    
+    sendingFacilityError: null,
+  loadingData: false,
+  loadingDataError: null,    
   };

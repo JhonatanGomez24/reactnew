@@ -18,7 +18,27 @@ import { actions } from './actions';
               [action.description]: action.payload
             }
           }
-          
+          case actions.fetchData:
+      return {
+        ...state,
+        loadingData: true,
+        loadingDataError: null,
+      };
+    case actions.fetchDataSuccess:
+      return {
+        ...state,
+        loadingData: false,
+        loadingDataError: null,
+        facility: {
+          ...action.payload,
+        },
+      };
+    case actions.fetchDataError:
+      return {
+        ...state,
+        loadingData: false,
+        loadingDataError: action.payload,
+      }
          default:
       return state;
   }
