@@ -10,13 +10,6 @@ import { actions } from './actions';
         ...state,
         data: [...state.data, newData],
       };
-      case actions.deleteData:
-        let dataDelete = state.data;
-        dataDelete.splice(action.payload, 1);
-        return {
-          ...state,
-          data: dataDelete,
-        };
       case actions.fetchDataSuccess:
         return{
           ...state,
@@ -37,7 +30,26 @@ import { actions } from './actions';
             loadingdata: false,
             errordata: action.payload,
           }
-
+        case actions.deleteData:
+          return {
+            ...state,
+            loadingDelete: true,
+            errorDelete: null,
+          }
+        case actions.deleteDataSuccess:
+          return {
+            ...state,
+            loadingDelete: false,
+            errorDelete: null,
+            reload: !state.reload
+          }
+        case actions.deleteDataError:
+          return {
+            ...state,
+            loadingDelete: false,
+            errorDelete: action.payload,
+            reload: !state.reload
+          }
     default:
       return state;
   }
