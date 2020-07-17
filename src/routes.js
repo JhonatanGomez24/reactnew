@@ -41,9 +41,10 @@ const OtherDocs = React.lazy(() => import('./Demo/Other/Docs'));
 const Example = React.lazy(() => import('./Views/Example'));
 
 const Facility = React.lazy(() => import('./Views/Facilitys'));
+const FacilityForm = React.lazy(() => import('./Views/Facilitys/facilityForm'))
 
 const Delivery = React.lazy(() => import('./Views/Delivery'));
-
+const DeliveryForm = React.lazy(() => import('./Views/Delivery/Form'));
 const routes = [
   {
     path: '/dashboard/default',
@@ -131,10 +132,22 @@ const routes = [
     component: Facility,
   },
   {
+    path: '/facility/:id',
+    exact: true,
+    name: 'FacilityForm',
+    component: FacilityForm,
+  },
+  {
     path: '/delivery',
     exact: true,
     name: 'Delivery',
     component: Delivery,
+  },
+  {
+    path: '/delivery/:id',
+    exact: true,
+    name: 'Delivery Ejemplo',
+    component: DeliveryForm,
   },
 ];
 

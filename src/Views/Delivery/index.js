@@ -1,6 +1,6 @@
-import React, { useReducer, useEffect } from 'react';
-import Aux from '../../hoc/_Aux';
+import React, { useReducer,useEffect} from 'react'; 
 import axios from 'axios';
+import Aux from '../../hoc/_Aux';
 
 import { actions } from './actions';
 import { initialState } from './constants';
@@ -8,59 +8,42 @@ import { reducer } from './reducer';
 
 import { Container, Row, Button, Card, Table } from 'react-bootstrap';
 
-const Example = (props) => {
-  console.log(props);
+const Delivery = (props) => {
+  console.log(props)
   const [state, dispatch] = useReducer(reducer, initialState);
-
-  useEffect(() => {
-    const fetchfacility = async() => {
-      dispatch({type: actions.fetchData})
-      try {
-       let responsive = await axios.get('http://ec2-52-90-69-15.compute-1.amazonaws.com/api/delivery/facilities');
-       dispatch({type: actions.fetchDataSuccess, payload:responsive.data})
-      } catch (error) {
-       dispatch({type: actions.fetchDataError, payload:error})
-      }
-    }
-    fetchfacility();
-  },[])
-
-  const addFacility = () => {
-    props.history.push('/facility/new');
+ useEffect(() => {
+   const fetchcanal = async() => {
+     dispatch({type: actions.fetchData}) 
+     try {    
+      let responsive = await axios.get('http://ec2-52-90-69-15.compute-1.amazonaws.com/api/delivery/canales'); 
+      dispatch({type: actions.fetchDataSuccess, payload:responsive.data}) 
+     } catch (error) {
+      dispatch({type: actions.fetchDataError, payload:error}) 
+     }
+   }
+   fetchcanal();
+ },[])
+  const addDelivery = () => {
+      props.history.push("/delivery/new");
   };
-
-  useEffect(() => {
-    const fetchfacility = async() => {
-      dispatch({type: actions.fetchData})
-      try {
-       let responsive = await axios.delete('http://ec2-52-90-69-15.compute-1.amazonaws.com/api/delivery/facilities/${id}');
-       dispatch({type: actions.fetchDataSuccess, payload:responsive.data})
-      } catch (error) {
-       dispatch({type: actions.fetchDataError, payload:error})
-      }
-    }
-    fetchfacility();
-  },[])
-
-  const deleteFacility = (idx) => {
+  const deleteDelivery = (idx) => {
     dispatch({ type: actions.deleteData, payload: idx });
   };
   return (
     <Aux>
       <Container>
         <Row className='justify-content-center'>
-          <h3>Facilitys</h3>
+          <h3>Canales de entrega</h3>
         </Row>
         <Row className='justify-content-end'>
-          <Button onClick={addFacility} variant='success'>
-            Agregar una Facility
+          <Button onClick={addDelivery} variant='success'>
+            Agregar Elemento
           </Button>
         </Row>
-
         <hr />
         <Card>
           <Card.Header>
-            <Card.Title as='h5'>Lista de Facilitys registradas</Card.Title>
+            <Card.Title as='h5'>Lista de Canales de entrega</Card.Title>
           </Card.Header>
           <Card.Body>
             <Table responsive hover>
@@ -68,7 +51,7 @@ const Example = (props) => {
                 <tr>
                   <th>#</th>
                   <th>Nombre</th>
-                  <th>Descripción</th>
+                  <th>Logo</th>   
                   <th>Acciones</th>
                 </tr>
               </thead>
@@ -78,17 +61,16 @@ const Example = (props) => {
                     <tr key = {idx}>
                       <th scope='row'>{item.id}</th>
                       <th>{item.name}</th>
-                      <th>{item.description}</th>
+                      <th>{item.img}</th> 
                       <th>
-                        <Button 
-                          onClick={() => deleteFacility(idx)}
+                        <Button
+                          onClick={() => deleteDelivery(idx)}
                           variant='danger'
                         >
                           <span className='pcoded-micon'>
                             <i className='feather icon-trash' />
                           </span>
                         </Button>
-                       
                       </th>
                     </tr>
                   );
@@ -102,4 +84,4 @@ const Example = (props) => {
   );
 };
 
-export default Example;
+export default Delivery;

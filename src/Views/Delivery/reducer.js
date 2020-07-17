@@ -3,13 +3,20 @@ import { actions } from './actions';
   switch (action.type) {
     case actions.addNewData:
       let newData = {
-        type: 'facility',
+        type: 'delivery',
         random: Math.floor(Math.random() * (20 - 1)) + 1,
       };
       return {
         ...state,
         data: [...state.data, newData],
       };
+      case actions.deleteData:
+        let dataDelete = state.data;
+        dataDelete.splice(action.payload, 1);
+        return {
+          ...state,
+          data: dataDelete,
+        };
       case actions.fetchDataSuccess:
         return{
           ...state,
@@ -30,13 +37,7 @@ import { actions } from './actions';
             loadingdata: false,
             errordata: action.payload,
           }
-          case actions.deleteData:
-            let dataDelete = state.data;
-            dataDelete.splice(idx=>idx.id!==action.payload);
-            return {
-              ...state,
-              data: dataDelete,
-            };
+
     default:
       return state;
   }
