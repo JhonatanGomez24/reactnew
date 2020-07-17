@@ -1,5 +1,6 @@
-import React, { useReducer } from 'react';
+import React, { useReducer, useEffect } from 'react';
 import Aux from '../../hoc/_Aux';
+import axios from 'axios';
 
 import { actions } from './actions';
 import { initialState } from './constants';
@@ -7,15 +8,44 @@ import { reducer } from './reducer';
 
 import { Container, Row, Button, Card, Table } from 'react-bootstrap';
 
-const Example = () => {
+const Example = (props) => {
+  console.log(props);
   const [state, dispatch] = useReducer(reducer, initialState);
 
+  useEffect(() => {
+    const fetchFacility = async () => {
+      dispatch({ type: actions.fetchData });
+      try {
+        let responsive = await axios.get(
+          'http://ec2-52-90-69-15.compute-1.amazonaws.com/api/delivery/facilities'
+        );
+        dispatch({ type: actions.fetchDataSuccess, payload: responsive.data });
+      } catch (error) {
+        dispatch({ type: actions.fetchDataError, payload: error });
+      }
+    };
+    fetchFacility();
+  }, [state.reload]);
+
   const addFacility = () => {
-    dispatch({ type: actions.addNewData });
+    props.history.push('/facility/new');
   };
 
-  const deleteFacility = idx => {
-    dispatch({ type: actions.deleteData, payload: idx });
+  const editFacility = (id) => {
+    props.history.push(`/facility/${id}`);
+  }
+
+  const deleteFacility = async (id) => {
+    dispatch({ type: actions.deleteData });
+
+    try {
+      await axios.delete(
+        `http://ec2-52-90-69-15.compute-1.amazonaws.com/api/delivery/facilities/${id}`
+      );
+      dispatch({ type: actions.deleteDataSuccess });
+    } catch (error) {
+      dispatch({ type: actions.deleteDataError, payload: error });
+    }
   };
 
   return (
@@ -29,6 +59,7 @@ const Example = () => {
             Agregar una Facility
           </Button>
         </Row>
+
         <hr />
         <Card>
           <Card.Header>
@@ -38,28 +69,37 @@ const Example = () => {
             <Table responsive hover>
               <thead>
                 <tr>
-                  <th>ID</th>
+                  <th>#</th>
                   <th>Nombre</th>
-                  <th>número al azar</th>
+                  <th>Descripción</th>
                   <th>Acciones</th>
                 </tr>
               </thead>
               <tbody>
                 {state.data.map((item, idx) => {
                   return (
-                    <tr>
-                      <th scope='row'>{idx}</th>
-                      <th>{item.type}</th>
-                      <th>{item.random}</th>
+                    <tr key = {idx}>
+                      <th scope='row'>{item.id}</th>
+                      <th>{item.name}</th>
+                      <th>{item.description}</th>
                       <th>
-                        <Button
-                          onClick={() => deleteFacility(idx)}
+                      <Button
+                          onClick={() => editFacility(item.id)}
+                          variant='primary'
+                        >
+                          <span className='pcoded-micon'>
+                            <i className='feather icon-edit-2' />
+                          </span>
+                        </Button>
+                      <Button
+                          onClick={() => deleteFacility(item.id)}
                           variant='danger'
                         >
                           <span className='pcoded-micon'>
                             <i className='feather icon-trash' />
                           </span>
                         </Button>
+                       
                       </th>
                     </tr>
                   );

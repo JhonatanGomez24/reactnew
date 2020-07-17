@@ -1,4 +1,9 @@
 export const actions = {
-    addNewData: 'ADD_NEW_DATA',
-    deleteData: 'DELETE_DATA',
+  fetchData: 'FETCHDATA',
+  fetchDataSuccess: 'FETCHDATASUCCES',
+  fetchDataError: 'FETCHDATAERROR',
+  deleteData: 'DELETE_DATA',
+  deleteDataSuccess: 'DELETE_DATA_SUCCESS',
+  deleteDataError: 'DELETE_DATA_ERROR'
   };
+  

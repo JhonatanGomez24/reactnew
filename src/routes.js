@@ -1,6 +1,5 @@
 import React from 'react';
 import $ from 'jquery';
-import { exact } from 'prop-types';
 
 window.jQuery = $;
 window.$ = $;
@@ -9,23 +8,23 @@ global.jQuery = $;
 const DashboardDefault = React.lazy(() => import('./Demo/Dashboard/Default'));
 
 const UIBasicButton = React.lazy(() =>
-  import('./Demo/UIElements/Basic/Button'),
+  import('./Demo/UIElements/Basic/Button')
 );
 const UIBasicBadges = React.lazy(() =>
-  import('./Demo/UIElements/Basic/Badges'),
+  import('./Demo/UIElements/Basic/Badges')
 );
 const UIBasicBreadcrumbPagination = React.lazy(() =>
-  import('./Demo/UIElements/Basic/BreadcrumbPagination'),
+  import('./Demo/UIElements/Basic/BreadcrumbPagination')
 );
 
 const UIBasicCollapse = React.lazy(() =>
-  import('./Demo/UIElements/Basic/Collapse'),
+  import('./Demo/UIElements/Basic/Collapse')
 );
 const UIBasicTabsPills = React.lazy(() =>
-  import('./Demo/UIElements/Basic/TabsPills'),
+  import('./Demo/UIElements/Basic/TabsPills')
 );
 const UIBasicBasicTypography = React.lazy(() =>
-  import('./Demo/UIElements/Basic/Typography'),
+  import('./Demo/UIElements/Basic/Typography')
 );
 
 const FormsElements = React.lazy(() => import('./Demo/Forms/FormsElements'));
@@ -42,6 +41,8 @@ const OtherDocs = React.lazy(() => import('./Demo/Other/Docs'));
 const Example = React.lazy(() => import('./Views/Example'));
 
 const Facility = React.lazy(() => import('./Views/Facilitys'));
+
+const FacilityForm = React.lazy(() => import('./Views/Facilitys/facilityForm'));
 
 const routes = [
   {
@@ -128,6 +129,12 @@ const routes = [
     exact: true,
     name: 'Facility',
     component: Facility,
+  },
+  {
+    path: '/facility/:id',
+    exact: true,
+    name: 'FacilityForm',
+    component: FacilityForm,
   },
 ];
 
