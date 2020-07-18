@@ -24,23 +24,12 @@ const DeliveryForm = (props) => {
         dispatch({ type: actions.fetchDataError, payload: error });
       }
     };
-<<<<<<< HEAD
 
     if (id !== 'new') {
       //cargar datos del canal
       fetchData();
     }
   }, [id]);
-
-=======
-
-    if (id !== 'new') {
-      //cargar datos del canal
-      fetchData();
-    }
-  }, []);
-
->>>>>>> f6dbeae28a7a3ed39ef6d9d2a0dfb78155279cfd
   const setterChannel = (e) => {
     e.preventDefault();
     let { name, value } = e.target;
@@ -114,8 +103,7 @@ const DeliveryForm = (props) => {
       <Row className='justify-content-start'>
         <Button onClick={() => Back()}>Volver</Button>
       </Row>
-<<<<<<< HEAD
-=======
+
       <Row className='justify-content-center'>
         <h3>
           {id !== 'new'
@@ -123,7 +111,6 @@ const DeliveryForm = (props) => {
             : 'Agregar Canal de entrega'}
         </h3>
       </Row>
->>>>>>> f6dbeae28a7a3ed39ef6d9d2a0dfb78155279cfd
       <hr />
       <Card>
         <Card.Header>

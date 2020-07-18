@@ -15,7 +15,7 @@ export default {
         },
         {
           id: 'facility',
-          title: 'Sucursales',
+          title: 'Facilitys',
           type: 'item',
           url: '/facility',
           icon: 'feather icon-folder',
@@ -26,6 +26,13 @@ export default {
           type: 'item',
           url: '/delivery',
           icon: 'feather icon-globe',
+        },
+{
+          id: 'restaurantes',
+          title: 'Restaurantes',
+          type: 'item',
+          url: '/restaurantes',
+          icon: 'feather icon-map-pin',
         },
       ],
     },

@@ -8,23 +8,23 @@ global.jQuery = $;
 const DashboardDefault = React.lazy(() => import('./Demo/Dashboard/Default'));
 
 const UIBasicButton = React.lazy(() =>
-  import('./Demo/UIElements/Basic/Button'),
+  import('./Demo/UIElements/Basic/Button')
 );
 const UIBasicBadges = React.lazy(() =>
-  import('./Demo/UIElements/Basic/Badges'),
+  import('./Demo/UIElements/Basic/Badges')
 );
 const UIBasicBreadcrumbPagination = React.lazy(() =>
-  import('./Demo/UIElements/Basic/BreadcrumbPagination'),
+  import('./Demo/UIElements/Basic/BreadcrumbPagination')
 );
 
 const UIBasicCollapse = React.lazy(() =>
-  import('./Demo/UIElements/Basic/Collapse'),
+  import('./Demo/UIElements/Basic/Collapse')
 );
 const UIBasicTabsPills = React.lazy(() =>
-  import('./Demo/UIElements/Basic/TabsPills'),
+  import('./Demo/UIElements/Basic/TabsPills')
 );
 const UIBasicBasicTypography = React.lazy(() =>
-  import('./Demo/UIElements/Basic/Typography'),
+  import('./Demo/UIElements/Basic/Typography')
 );
 
 const FormsElements = React.lazy(() => import('./Demo/Forms/FormsElements'));
@@ -45,6 +45,10 @@ const FacilityForm = React.lazy(() => import('./Views/Facilitys/facilityForm'))
 
 const Delivery = React.lazy(() => import('./Views/Delivery'));
 const DeliveryForm = React.lazy(() => import('./Views/Delivery/Form'));
+
+const restaurantes = React.lazy(() => import('./Views/Restaurantes'));
+const restaurantesForm = React.lazy(() => import('./Views/Restaurantes/restautantesForm'));
+
 const routes = [
   {
     path: '/dashboard/default',
@@ -137,6 +141,7 @@ const routes = [
     name: 'FacilityForm',
     component: FacilityForm,
   },
+
   {
     path: '/delivery',
     exact: true,
@@ -149,6 +154,19 @@ const routes = [
     name: 'Delivery Ejemplo',
     component: DeliveryForm,
   },
+{
+    path: '/restaurantes',
+    exact: true,
+    name: 'Restaurants',
+    component: restaurantes,
+  },
+  {
+    path: '/restaurantes/:id',
+    exact: true,
+    name: 'RestaurantesForm',
+    component: restaurantesForm,
+  },
+
 ];
 
 export default routes;
