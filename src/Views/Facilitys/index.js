@@ -1,4 +1,6 @@
+
 import React, { useReducer, useEffect, useState } from 'react';
+import React, { useReducer, useEffect } from 'react';
 import Aux from '../../hoc/_Aux';
 import axios from 'axios';
 
@@ -63,7 +65,6 @@ const Example = (props) => {
       dispatch({ type: actions.deleteDataError, payload: error });
     }
   };
-  
   console.log(state.data)
   const [dataResults, setDataResults] = useState(state.data);
   console.log("DATA", dataResults);
@@ -76,6 +77,9 @@ const Example = (props) => {
     <Aux>
       <Container>
       <input type="text"  class="form-control" placeholder="Buscar pedido" onChange={(e) => search(e)}></input>
+  return (
+    <Aux>
+      <Container>
         <Row className='justify-content-center'>
           <h3>Facilitys</h3>
         </Row>
@@ -103,6 +107,7 @@ const Example = (props) => {
               </thead>
               <tbody>
                 {state.data, dataResults.map((item, idx) => {
+                {state.data.map((item, idx) => {
                   return (
                     <tr key={idx}>
                       <th scope='row'>{item.id}</th>
