@@ -1,54 +1,52 @@
 import { actions } from './actions';
+
 export const reducer = (state, action) => {
   switch (action.type) {
-    case actions.addNewData:
-      let newData = {
-        type: 'facility',
-        random: Math.floor(Math.random() * (20 - 1)) + 1,
-      };
+    case actions.fetchData:
       return {
         ...state,
-        data: [...state.data, newData],
+        loadingRestaurants: true,
+        errorRestaurants: null,
       };
     case actions.fetchDataSuccess:
       return {
         ...state,
-        data: action.payload,
-        loadingdata: false,
-        errordata: null,
-      };
-    case actions.fetchData:
-      return {
-        ...state,
-        loadingdata: true,
-        errordata: null,
+        loadingRestaurants: false,
+        errorRestaurants: null,
+        restaurants: action.payload,
       };
     case actions.fetchDataError:
       return {
         ...state,
-        data: [],
-        loadingdata: false,
-        errordata: action.payload,
+        loadingRestaurants: false,
+        errorRestaurants: action.payload,
+        restaurants: [],
       };
-    case actions.deleteData:
+    case actions.setReload:
+      return {
+        ...state,
+        reload: !state.reload,
+      };
+    case actions.deleteRestaurant:
       return {
         ...state,
         loadingDelete: true,
         errorDelete: null,
+        successDelete: false,
       };
-    case actions.deleteDataSuccess:
+    case actions.deleteRestaurantSuccess:
       return {
         ...state,
         loadingDelete: false,
         errorDelete: null,
-        reload: !state.reload,
+        successDelete: true,
       };
-    case actions.deleteDataError:
+    case actions.deleteRestaurantError:
       return {
         ...state,
         loadingDelete: false,
         errorDelete: action.payload,
-        reload: !state.reload,
+        successDelete: false,
       };
     case actions.showModal:
       return {
@@ -62,7 +60,17 @@ export const reducer = (state, action) => {
         idSelected: -1,
         showModal: false,
       };
+    case actions.toggleModalView:
+      return {
+        ...state,
+        showModalView: !state.showModalView,
+      };
+    case actions.setResSelected:
+      return {
+        ...state,
+        resSelected: action.payload,
+      };
     default:
-      return state;
+      break;
   }
 };
