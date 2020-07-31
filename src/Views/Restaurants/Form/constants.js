@@ -1,0 +1,21 @@
+export const initialState = {
+  restaurant: {
+    name: '',
+    address: '',
+    email: '',
+    openingTime: '',
+    closingTime: '',
+    preparationTime: 0,
+    receiptsType: '',
+    facilityId: -1,
+    canales: [],
+  },
+  facilitys: [],
+  loadingFacilitys: false,
+  errorFacilitys: null,
+  channels: [],
+  loadingChannels: false,
+  errorChannels: null,
+  loadingSave: false,
+  errorSave: null,
+};
