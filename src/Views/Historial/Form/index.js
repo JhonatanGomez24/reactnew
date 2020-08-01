@@ -154,6 +154,7 @@ const HistorialForm = ({ history }) => {
               <Form>
                 <Form.Group controlId='nameInput'>
                   <Form.Label>Canal de entrega</Form.Label>
+                  <Form.Label>Nombre</Form.Label>
                   <Form.Control
                     value={state.restaurant.name}
                     onChange={setter}
@@ -164,6 +165,11 @@ const HistorialForm = ({ history }) => {
                 </Form.Group>
                 <Form.Group controlId='addressInput'>
                   <Form.Label>Repartidor</Form.Label>
+                    placeholder='Ingrese nombre'
+                  />
+                </Form.Group>
+                <Form.Group controlId='addressInput'>
+                  <Form.Label>Dirección</Form.Label>
                   <Form.Control
                     value={state.restaurant.address}
                     onChange={setter}
@@ -174,6 +180,11 @@ const HistorialForm = ({ history }) => {
                 </Form.Group>
                 <Form.Group controlId='emailInput'>
                   <Form.Label>Restarurante</Form.Label>
+                    placeholder='Ingrese la dirección'
+                  />
+                </Form.Group>
+                <Form.Group controlId='emailInput'>
+                  <Form.Label>Correo electrónico</Form.Label>
                   <Form.Control
                     value={state.restaurant.email}
                     onChange={setter}
@@ -196,6 +207,21 @@ const HistorialForm = ({ history }) => {
 
                 <Form.Group controlId='preparationTimeInput'>
                   <Form.Label>Fecha del pedido</Form.Label>
+                    placeholder='ejemplo@delivery.com'
+                  />
+                </Form.Group>
+                <Form.Group controlId='receiptsInput'>
+                  <Form.Label>Tipo de recibos</Form.Label>
+                  <Form.Control
+                    value={state.restaurant.receiptsType}
+                    onChange={setter}
+                    name='receiptsType'
+                    type='text'
+                    placeholder='Efectivo'
+                  />
+                </Form.Group>
+                <Form.Group controlId='preparationTimeInput'>
+                  <Form.Label>Tiempo de preparación / minutos</Form.Label>
                   <Form.Control
                     value={state.restaurant.preparationTime}
                     onChange={setter}
@@ -204,7 +230,96 @@ const HistorialForm = ({ history }) => {
                     placeholder='Ingrese la fecha'
                   />
                 </Form.Group>
-          
+                    type='number'
+                    placeholder='0'
+                  />
+                </Form.Group>
+                <Form.Group controlId='openingTimeInput'>
+                  <Form.Label>Hora de apertura</Form.Label>
+                  <Form.Control
+                    value={state.restaurant.openingTime}
+                    onChange={setter}
+                    name='openingTime'
+                    type='time'
+                  />
+                </Form.Group>
+                <Form.Group controlId='closingTimeInput'>
+                  <Form.Label>Hora de cierre</Form.Label>
+                  <Form.Control
+                    value={state.restaurant.closingTime}
+                    onChange={setter}
+                    name='closingTime'
+                    type='time'
+                  />
+                </Form.Group>
+                <Form.Group controlId='facilityInput'>
+                  <Form.Label>Facility</Form.Label>
+                  <Form.Control
+                    value={state.restaurant.facilityId}
+                    onChange={setter}
+                    name='facilityId'
+                    as='select'
+                  >
+                    <option value={-1}>Seleccione una facility</option>
+                    {state.facilitys.map((item, idx) => {
+                      return (
+                        <option key={idx} value={item.id}>
+                          {item.name}
+                        </option>
+                      );
+                    })}
+                  </Form.Control>
+                </Form.Group>
+                <Form.Group controlId='channelsInput'>
+                  <Form.Label>Canales de entrega</Form.Label>
+                  <Form.Control
+                    onChange={addCanales}
+                    name='canales'
+                    as='select'
+                  >
+                    <option value={-1}>Seleccione un canal</option>
+                    {state.channels.map((item, idx) => {
+                      return (
+                        <option key={idx} value={item.id}>
+                          {item.name}
+                        </option>
+                      );
+                    })}
+                  </Form.Control>
+                  <Row className='mt-2'>
+                    {state.restaurant.canales.map((item, idx) => {
+                      let renderItem = state.channels.find(
+                        (channel) => channel.id === item
+                      );
+                      return (
+                        <Col className='mt-1' md='6' sm='12' key={idx}>
+                          <div
+                            style={{
+                              width: '100%',
+                              height: '50px',
+                              display: 'flex',
+                              flexDirection: 'row',
+                              backgroundColor: '#f4f4f4',
+                              padding: '5px 5px',
+                              alignItems: 'center',
+                              justifyContent: 'space-between',
+                            }}
+                          >
+                            <h3>{renderItem.name}</h3>
+                            <Button
+                              onClick={() => deleteCanales(idx)}
+                              variant='danger'
+                            >
+                              <span className='pcoded-micon'>
+                                <i className='feather icon-trash' />
+                              </span>
+                            </Button>
+                          </div>
+                        </Col>
+                      );
+                    })}
+                  </Row>
+                </Form.Group>
                 <div
                   style={{
                     display: 'flex',

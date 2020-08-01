@@ -105,7 +105,7 @@ const Example = (props) => {
                 </tr>
               </thead>
               <tbody>
-                {state.data, dataResults.map((item, idx) => {
+                {state.data.map((item, idx) => {
                   return (
                     <tr key={idx}>
                       <th scope='row'>{item.id}</th>
