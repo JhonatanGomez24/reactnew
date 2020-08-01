@@ -1,5 +1,6 @@
 import React from 'react';
 import $ from 'jquery';
+import ChannelsForm from './Views/Channels/Form';
 
 window.jQuery = $;
 window.$ = $;
@@ -38,11 +39,22 @@ const GoogleMap = React.lazy(() => import('./Demo/Maps/GoogleMap/index'));
 const OtherSamplePage = React.lazy(() => import('./Demo/Other/SamplePage'));
 const OtherDocs = React.lazy(() => import('./Demo/Other/Docs'));
 
-const Example = React.lazy(() => import('./Views/Example'));
-
 const Facility = React.lazy(() => import('./Views/Facilitys'));
-
 const FacilityForm = React.lazy(() => import('./Views/Facilitys/facilityForm'));
+
+const Channel = React.lazy(() => import('./Views/Channels'));
+const ChannelForm = React.lazy(() => import('./Views/Channels/Form'));
+
+const Restaurant = React.lazy(() => import('./Views/Restaurants/'));
+const RestaurantForm = React.lazy(() => import('./Views/Restaurants/Form'));
+
+const Orders = React.lazy(() => import('./Views/Orders/'));
+const OrdersForm = React.lazy(() => import('./Views/Orders/Form'));
+const Pedidos = React.lazy(() => import('./Views/Orders/Form2'));
+
+const Historial = React.lazy(() => import('./Views/Historial/'));
+const HistorialForm = React.lazy(() => import('./Views/Historial/Form'));
+
 
 const routes = [
   {
@@ -119,12 +131,6 @@ const routes = [
   },
   { path: '/docs', exact: true, name: 'Documentation', component: OtherDocs },
   {
-    path: '/example',
-    exact: true,
-    name: 'Ejemplo',
-    component: Example,
-  },
-  {
     path: '/facility',
     exact: true,
     name: 'Facility',
@@ -135,6 +141,60 @@ const routes = [
     exact: true,
     name: 'FacilityForm',
     component: FacilityForm,
+  },
+  {
+    path: '/channels',
+    exact: true,
+    name: 'Channels',
+    component: Channel,
+  },
+  {
+    path: '/channels/:id',
+    exact: true,
+    name: 'ChannelsForm',
+    component: ChannelForm,
+  },
+  {
+    path: '/restaurants',
+    exact: true,
+    name: 'Restaurants',
+    component: Restaurant,
+  },
+  {
+    path: '/restaurants/:id',
+    exact: true,
+    name: 'RestaurantsForm',
+    component: RestaurantForm,
+  },
+  {
+    path: '/orders',
+    exact: true,
+    name: 'Orders',
+    component: Orders,
+  },
+  {
+    path: '/orders/:id',
+    exact: true,
+    name: 'OrdersForm',
+    component: OrdersForm,
+  },
+  {
+    path: '/pedidos',
+    exact: true,
+    name: 'Pedidos',
+    component: Pedidos,
+  },
+  {
+    path: '/historial',
+    exact: true,
+    name: 'Historial',
+    component: Historial,
+  },
+  {
+    path: '/historial/:id',
+    exact: true,
+    name: 'HistorialForm',
+    component: HistorialForm,
   },
 ];
 
