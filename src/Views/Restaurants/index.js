@@ -1,6 +1,5 @@
 
 import React, { useReducer, useEffect, useState } from 'react';
-import React, { useReducer, useEffect } from 'react';
 import Aux from '../../hoc/_Aux';
 import axios from 'axios';
 
