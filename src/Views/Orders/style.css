@@ -1,0 +1,8 @@
+.btnDelete {
+    padding: 2px 2px !important;
+    margin-left: 5px;
+    border-radius: 0.25rem;
+    width: 50px;
+    margin-right: 10px;
+    transition: all 0.3s ease-in-out;
+  }

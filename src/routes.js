@@ -50,7 +50,6 @@ const RestaurantForm = React.lazy(() => import('./Views/Restaurants/Form'));
 
 const Orders = React.lazy(() => import('./Views/Orders/'));
 const OrdersForm = React.lazy(() => import('./Views/Orders/Form'));
-const Pedidos = React.lazy(() => import('./Views/Orders/Form2'));
 
 const Historial = React.lazy(() => import('./Views/Historial/'));
 const HistorialForm = React.lazy(() => import('./Views/Historial/Form'));
@@ -177,12 +176,6 @@ const routes = [
     exact: true,
     name: 'OrdersForm',
     component: OrdersForm,
-  },
-  {
-    path: '/pedidos',
-    exact: true,
-    name: 'Pedidos',
-    component: Pedidos,
   },
   {
     path: '/historial',

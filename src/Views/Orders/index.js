@@ -6,6 +6,9 @@ import { reducer } from './reducer';
 
 import axios from 'axios';
 
+import './style.css';
+
+import { Container,Row, Button,Card, Col
 import { Container,Row, Button,Card, Col,Form
 } from 'react-bootstrap';
 import { useParams } from 'react-router-dom';
@@ -50,6 +53,26 @@ const Orders = ({ history }) => {
                       return (
     <Col md={6} xl={4}>  
                         <Card className='card-social'>
+                            <Card.Body className='border-bottom'>
+                                <div className="row align-items-center justify-content-center">
+                                    <div className="col-auto">
+                                        <i className="fa fa-building text-primary f-36"/>
+                                    </div>
+                                    <div className="col text-right">
+                                        <h3>Facility</h3>
+                      <Card.Text scope='row'></Card.Text>
+                      <Card.Text>{item.name}</Card.Text>
+                      <Card.Text>{item.description}</Card.Text>
+                                    </div>
+                                </div>
+                                </Card.Body>
+                                <Card.Body>
+                                <div className="row align-items-center justify-content-center card-active">
+                                    <div className="col-6">
+                                        <Button onClick={pedidos}>Pedidos</Button>
+                                    </div>
+                                </div>
+                            </Card.Body>
                             <Card.Body>
                                 <div className="row align-items-center justify-content-center">
                                     <div className="col">

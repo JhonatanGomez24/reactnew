@@ -153,12 +153,18 @@ const HistorialForm = ({ history }) => {
             ) : (
               <Form>
                 <Form.Group controlId='nameInput'>
+                  <Form.Label>Canal de entrega</Form.Label>
                   <Form.Label>Nombre</Form.Label>
                   <Form.Control
                     value={state.restaurant.name}
                     onChange={setter}
                     name='name'
                     type='text'
+                    placeholder='Ingrese canal de entrega'
+                  />
+                </Form.Group>
+                <Form.Group controlId='addressInput'>
+                  <Form.Label>Repartidor</Form.Label>
                     placeholder='Ingrese nombre'
                   />
                 </Form.Group>
@@ -169,6 +175,11 @@ const HistorialForm = ({ history }) => {
                     onChange={setter}
                     name='address'
                     type='text'
+                    placeholder='Ingrese repartidor'
+                  />
+                </Form.Group>
+                <Form.Group controlId='emailInput'>
+                  <Form.Label>Restarurante</Form.Label>
                     placeholder='Ingrese la dirección'
                   />
                 </Form.Group>
@@ -179,6 +190,23 @@ const HistorialForm = ({ history }) => {
                     onChange={setter}
                     name='email'
                     type='text'
+                    placeholder='Ingrese restaurante'
+                  />
+                </Form.Group>
+
+                <Form.Group controlId='emailInput'>
+                  <Form.Label>Total</Form.Label>
+                  <Form.Control
+                    value={state.restaurant.email}
+                    onChange={setter}
+                    name='email'
+                    type='text'
+                    placeholder='Ingrese total'
+                  />
+                </Form.Group>
+
+                <Form.Group controlId='preparationTimeInput'>
+                  <Form.Label>Fecha del pedido</Form.Label>
                     placeholder='ejemplo@delivery.com'
                   />
                 </Form.Group>
@@ -198,6 +226,10 @@ const HistorialForm = ({ history }) => {
                     value={state.restaurant.preparationTime}
                     onChange={setter}
                     name='preparationTime'
+                    type='date'
+                    placeholder='Ingrese la fecha'
+                  />
+                </Form.Group>
                     type='number'
                     placeholder='0'
                   />

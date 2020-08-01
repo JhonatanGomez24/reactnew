@@ -1,4 +1,7 @@
-import React, { useReducer, useEffect } from 'react';
+
+import React, { useReducer, useEffect, useState } from 'react';
+
+
 import Aux from '../../hoc/_Aux';
 import axios from 'axios';
 
@@ -63,10 +66,19 @@ const Example = (props) => {
       dispatch({ type: actions.deleteDataError, payload: error });
     }
   };
-
+  
+  console.log(state.data)
+  const [dataResults, setDataResults] = useState(state.data);
+  console.log("DATA", dataResults);
+  const search = (e) => {
+    let newData = state.data.filter((item) => item.name.includes(e.target.value));
+    setDataResults(newData);
+    
+  }
   return (
     <Aux>
       <Container>
+      <input type="text"  class="form-control" placeholder="Buscar pedido" onChange={(e) => search(e)}></input>
         <Row className='justify-content-center'>
           <h3>Facilitys</h3>
         </Row>
