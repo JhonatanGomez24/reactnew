@@ -1,4 +1,4 @@
-import React, { useReducer, useEffect } from 'react';
+import React, { useReducer, useEffect, useState } from 'react';
 
 import { actions } from './actions';
 import { initialState } from './constants';
@@ -12,23 +12,13 @@ import { useParams } from 'react-router-dom';
 
 const Orders = ({ history }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
-  let { id } = useParams();
+  let {id} = useParams();
+
+  const [DataResults, setDataResults] = useState([]);
+
+  console.log(typeof id);
 
   useEffect(() => {
-    const fetchRestaurant = async () => {
-      dispatch({ type: actions.fetchRestaurant });
-      try {
-        let { data } = await axios.get(
-          'http://ec2-52-90-69-15.compute-1.amazonaws.com/api/delivery/restaurantes'
-        );
-        dispatch({ type: actions.fetchRestaurantSuccess, payload: data });
-      } catch (error) {
-        dispatch({
-          type: actions.fetchRestaurantError,
-          payload: 'Ha ocurrido un error en el servidor',
-        });
-      }
-    };
     fetchRestaurant();
     if (id !== 'new') {
     }
@@ -42,6 +32,29 @@ const Orders = ({ history }) => {
     history.push('/temporal');
   };
 
+  const fetchRestaurant = async () => {
+      dispatch({ type: actions.fetchRestaurant });
+      try {
+        let { data } = await axios.get(
+          `http://ec2-52-90-69-15.compute-1.amazonaws.com/api/delivery/restaurantes/`
+        );
+        console.log("DATA2: ", data)
+        dispatch({ type: actions.fetchRestaurantSuccess, payload: data });
+      } catch (error) {
+        dispatch({
+          type: actions.fetchRestaurantError,
+          payload: 'Ha ocurrido un error en el servidor',
+        });
+      }
+    };
+
+  console.log("State Restaurant", state.restaurant);
+
+  const newArray = state.restaurant.filter((elem) => elem.facilityId === parseInt(id))
+
+  console.log("NEW Aray", newArray);
+  
+
   return (
     <Container>
       <Card.Header>
@@ -50,7 +63,7 @@ const Orders = ({ history }) => {
           <br></br>
           <div class = "container mt-5">
       <div class="row justify-content-center">
-          {state.restaurant.map((item) => {
+          {newArray.map((item) => {
                       return (
     <Col md={6} xl={4}>  
                         <Card className='card-social'>

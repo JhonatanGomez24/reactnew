@@ -200,7 +200,7 @@ const routes = [
     component: Temporal,
   },
   {
-    path: '/restaurant',
+    path: '/restaurant/:id',
     exact: true,
     name: 'rest',
     component: Rest,

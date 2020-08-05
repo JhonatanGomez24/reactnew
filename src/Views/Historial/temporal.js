@@ -22,18 +22,34 @@ import './style.css';
 
 const Historial = ({ history }) => {
   const [dataResults, setDataResults] = useState([]);
+  const [searchWord, setSearchWord] = useState('');
   const pedido = ['uber' , 'rappi' , 'didi' , 'otro'];
-  const search = (e) => {
-    let newData = pedido.filter((item) => item.includes(e.target.value));
+  
+  useEffect(() => {
+    if (searchWord === ''){
+      setDataResults(pedido);
+    }
+  }, [searchWord])
+  
+  const search = () => {
+    if(searchWord === '') {
+      return;
+    }
+
+    let newData = pedido.filter((item) => item.includes(searchWord));
     setDataResults (newData);
   }
+
   return (
     <Aux>
       <Container>
       <div className="box">
       <div className="container-1">
       <span class="icon"><i className='feather icon-search'></i></span>
-      <input type="text"  id="search" placeholder="Buscar pedido" onChange={(e) => search(e)}></input>
+      <input type="text"  id="search" placeholder="Buscar pedido" onChange={(e) => {
+        setSearchWord(e.target.value); 
+        search();
+        }} />
       </div>
       </div>
       </Container>
@@ -61,13 +77,15 @@ const Historial = ({ history }) => {
                 </tr>
               </thead>
               <tbody>
-              {dataResults.map((elem) => {
+              {dataResults.map((elem, index) => {
                   return (
                     <tr >
-                      <th >{elem}</th>
-                      <th>
-                        
-                      </th>
+                      <th>{index + 1}</th>
+                      <th>{elem}</th>
+                      <th></th>
+                      <th></th>
+                      <th></th>
+                      <th></th>
                     </tr>
                   );
                 })}

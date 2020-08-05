@@ -6,7 +6,7 @@ import { reducer } from './reducer';
 
 import axios from 'axios';
 
-import { Container,Row, Button,Card, Col,Form
+import { Container,Row, Button, Card, Col,Form
 } from 'react-bootstrap';
 import { useParams } from 'react-router-dom';
 
@@ -42,8 +42,8 @@ const Orders = ({ history }) => {
     history.push('/temporal');
   };
 
-  const rest = () => {
-    history.push('/restaurant');
+  const rest = (id) => {
+    history.push(`/restaurant/${id}`);
   };
 
   return (
@@ -104,7 +104,7 @@ const Orders = ({ history }) => {
     <div class="col-sm">
     <label className="label theme-bg2 text-white f-14 f-w-400 float-right" onClick={() => pedidos()}>Pedidos </label>
     <label className="label theme-bg2 text-white f-14 f-w-400 float-right" onClick={() => temporal()}>Temporal </label>
-    <label className="label theme-bg2 text-white f-14 f-w-400 float-right" onClick={() => rest()}>viaje </label>
+    <label className="label theme-bg2 text-white f-14 f-w-400 float-right" onClick={() => rest(item.id)}>viaje </label>
     
     </div>
     <div class="col-sm">
