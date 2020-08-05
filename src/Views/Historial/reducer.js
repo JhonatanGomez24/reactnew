@@ -2,75 +2,48 @@ import { actions } from './actions';
 
 export const reducer = (state, action) => {
   switch (action.type) {
-    case actions.fetchData:
+    case actions.fetchFacilitys:
       return {
         ...state,
-        loadingRestaurants: true,
-        errorRestaurants: null,
+        loadingFacilitys: true,
+        errorFacilitys: false,
       };
-    case actions.fetchDataSuccess:
+    case actions.fetchFacilitysSuccess:
       return {
         ...state,
-        loadingRestaurants: false,
-        errorRestaurants: null,
-        restaurants: action.payload,
+        facilitys: action.payload,
+        loadingFacilitys: false,
+        errorFacilitys: false,
       };
-    case actions.fetchDataError:
+    case actions.fetchFacilitysError:
       return {
         ...state,
-        loadingRestaurants: false,
-        errorRestaurants: action.payload,
-        restaurants: [],
+        facilitys: [],
+        loadingFacilitys: false,
+        errorFacilitys: action.payload,
       };
-    case actions.setReload:
-      return {
-        ...state,
-        reload: !state.reload,
-      };
-    case actions.deleteRestaurant:
-      return {
-        ...state,
-        loadingDelete: true,
-        errorDelete: null,
-        successDelete: false,
-      };
-    case actions.deleteRestaurantSuccess:
-      return {
-        ...state,
-        loadingDelete: false,
-        errorDelete: null,
-        successDelete: true,
-      };
-    case actions.deleteRestaurantError:
-      return {
-        ...state,
-        loadingDelete: false,
-        errorDelete: action.payload,
-        successDelete: false,
-      };
-    case actions.showModal:
-      return {
-        ...state,
-        idSelected: action.payload,
-        showModal: true,
-      };
-    case actions.toggleModal:
-      return {
-        ...state,
-        idSelected: -1,
-        showModal: false,
-      };
-    case actions.toggleModalView:
-      return {
-        ...state,
-        showModalView: !state.showModalView,
-      };
-    case actions.setResSelected:
-      return {
-        ...state,
-        resSelected: action.payload,
-      };
+      case actions.fetchRestaurant:
+        return {
+          ...state,
+          restaurant: [],
+          loadingRestaurant: true,
+          errorRestaurant: null,
+        };
+      case actions.fetchRestaurantSuccess:
+        return {
+          ...state,
+          restaurant: action.payload,
+          loadingRestaurant: false,
+          errorRestaurant: null,
+        };
+      case actions.fetchRestaurantError:
+        return {
+          ...state,
+          restaurant: [],
+          loadingRestaurant: true,
+          errorRestaurant: action.payload,
+        };
     default:
-      break;
+      return state;
   }
 };

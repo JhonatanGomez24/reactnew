@@ -15,21 +15,21 @@ const Orders = ({ history }) => {
   let { id } = useParams();
 
   useEffect(() => {
-    const fetchFacilitys = async () => {
-      dispatch({ type: actions.fetchFacilitys });
+    const fetchRestaurant = async () => {
+      dispatch({ type: actions.fetchRestaurant });
       try {
         let { data } = await axios.get(
-          'http://ec2-52-90-69-15.compute-1.amazonaws.com/api/delivery/facilities'
+          'http://ec2-52-90-69-15.compute-1.amazonaws.com/api/delivery/restaurantes'
         );
-        dispatch({ type: actions.fetchFacilitysSuccess, payload: data });
+        dispatch({ type: actions.fetchRestaurantSuccess, payload: data });
       } catch (error) {
         dispatch({
-          type: actions.fetchFacilitysError,
+          type: actions.fetchRestaurantError,
           payload: 'Ha ocurrido un error en el servidor',
         });
       }
     };
-    fetchFacilitys();
+    fetchRestaurant();
     if (id !== 'new') {
     }
   }, [id]);
@@ -38,15 +38,19 @@ const Orders = ({ history }) => {
     history.push('/orders/new');
   };
 
+  const temporal = () => {
+    history.push('/temporal');
+  };
+
   return (
     <Container>
       <Card.Header>
-            <Card.Title as='h5'>Pedidos</Card.Title>
+            <Card.Title as='h5'>RESTAURANTES</Card.Title>
       </Card.Header>
           <br></br>
           <div class = "container mt-5">
       <div class="row justify-content-center">
-          {state.facilitys.map((item) => {
+          {state.restaurant.map((item) => {
                       return (
     <Col md={6} xl={4}>  
                         <Card className='card-social'>
@@ -95,6 +99,7 @@ const Orders = ({ history }) => {
     </div>
     <div class="col-sm">
     <label className="label theme-bg2 text-white f-14 f-w-400 float-right" onClick={() => pedidos()}>Pedidos </label>
+    <label className="label theme-bg2 text-white f-14 f-w-400 float-right" onClick={() => temporal()}>Temporal </label>
     </div>
     <div class="col-sm">
     </div>

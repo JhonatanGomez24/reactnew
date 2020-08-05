@@ -54,6 +54,10 @@ const OrdersForm = React.lazy(() => import('./Views/Orders/Form'));
 const Historial = React.lazy(() => import('./Views/Historial/'));
 const HistorialForm = React.lazy(() => import('./Views/Historial/Form'));
 
+const Temporal = React.lazy(() => import('./Views/Historial/temporal'));
+
+const Rest = React.lazy(() => import('./Views/Historial/restaurant'));
+
 
 const routes = [
   {
@@ -188,6 +192,18 @@ const routes = [
     exact: true,
     name: 'HistorialForm',
     component: HistorialForm,
+  },
+  {
+    path: '/temporal',
+    exact: true,
+    name: 'temporal',
+    component: Temporal,
+  },
+  {
+    path: '/restaurant',
+    exact: true,
+    name: 'rest',
+    component: Rest,
   },
 ];
 

@@ -15,7 +15,7 @@ export default {
         },
         {
           id: 'facility',
-          title: 'Facilitys',
+          title: 'Facilities',
           type: 'item',
           url: '/facility',
           icon: 'feather icon-folder',

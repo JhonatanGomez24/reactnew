@@ -1,15 +1,11 @@
 export const initialState = {
-  restaurants: [],
-  loadingRestaurants: false,
-  errorRestaurants: null,
-  reload: false,
-  idSelected: -1,
-  showModal: false,
-  loadingDelete: false,
-  errorDelete: null,
-  successDelete: false,
-  showModalView: false,
-  resSelected: {
-    canales: [],
-  },
+  facilitys: [],
+  loadingFacilitys: false,
+  errorFacilitys: null,
+  
+  restaurant: [],
+  loadingRestaurant: false,
+  errorRestaurant: null,
+  loadingSave: false,
+  errorSave: null,
 };

@@ -1,14 +1,9 @@
 export const actions = {
-  fetchData: 'FETCH_DATA',
-  fetchDataSuccess: 'FETCH_DATA_SUCCESS',
-  fetchDataError: 'FETCH_DATA_ERROR',
-  fetchDataError: 'FETCH_DATA_Error',
-  setReload: 'SET_RELOAD',
-  showModal: 'SHOW_MODAL',
-  toggleModal: 'TOGGLE_MODAL',
-  deleteRestaurant: 'DELETE_RESTAURANT',
-  deleteRestaurantSuccess: 'DELETE_RESTAURANT_SUCCESS',
-  deleteRestaurantError: 'DELETE_RESTAURANT_ERROR',
-  toggleModalView: 'TOGGLE_MODAL_VIEW',
-  setResSelected: 'SET_RES_SELECTED',
+  fetchFacilitys: 'FETCH_FACILITYS',
+  fetchFacilitysSuccess: 'FETCH_FACILITYS_SUCCCESS',
+  fetchFacilitysError: 'FETCH_FACILITYS_ERROR',
+  fetchRestaurant: 'FETCH_RESTAURANT',
+  fetchRestaurantSuccess: 'FETCH_RESTAURANT_SUCCESS',
+  fetchRestaurantError: 'FETCH_RESTAURANT_ERROR',
+
 };

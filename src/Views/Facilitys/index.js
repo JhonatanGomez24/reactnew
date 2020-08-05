@@ -78,13 +78,13 @@ const Example = (props) => {
   return (
     <Aux>
       <Container>
-      <input type="text"  class="form-control" placeholder="Buscar pedido" onChange={(e) => search(e)}></input>
+      <input type="text"  class="form-control" placeholder="Buscar Facilitie" onChange={(e) => search(e)}></input>
         <Row className='justify-content-center'>
-          <h3>Facilitys</h3>
+          <h3>Facilities</h3>
         </Row>
         <Row className='justify-content-end'>
           <Button onClick={addFacility} variant='success'>
-            Agregar una Facility
+            Agregar una Facilitie
           </Button>
         </Row>
         <hr />
@@ -92,7 +92,7 @@ const Example = (props) => {
         {state.errorDelete && <Alert>{state.errorDelete}</Alert>}
         <Card>
           <Card.Header>
-            <Card.Title as='h5'>Lista de Facilitys registradas</Card.Title>
+            <Card.Title as='h5'>Lista de Facilitiess registradas</Card.Title>
           </Card.Header>
           <Card.Body>
             <Table responsive hover>
@@ -105,7 +105,7 @@ const Example = (props) => {
                 </tr>
               </thead>
               <tbody>
-                {state.data.map((item, idx) => {
+                {dataResults.map((item, idx) => {
                   return (
                     <tr key={idx}>
                       <th scope='row'>{item.id}</th>
@@ -138,11 +138,11 @@ const Example = (props) => {
         </Card>
         <Modal show={state.showModal} onHide={hideModal}>
           <Modal.Header closeButton>
-            <Modal.Title>Eliminar Facility</Modal.Title>
+            <Modal.Title>Eliminar Facilitie</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            ¿Seguro que deseas eliminar esta facility?, no se podrá recuperar la
-            información!
+            ¿Seguro que deseas eliminar esta facilitie?, no se podrá recuperar la
+            información.
           </Modal.Body>
           <Modal.Footer>
             <Button variant='primary' onClick={hideModal}>
